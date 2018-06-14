@@ -1,6 +1,6 @@
 # Payment gateway module for Omnipay: Yandex kassa (checkout)
 ### forked from official for version compactable with actial Laravel",
-##yandexmoney-cms-omnipay
+##yandexmoney-cms-omnipay3
 
 Модуль оплаты yandexmoney-omnipay необходим для интеграции с сервисом [Яндекс.Касса](http://kassa.yandex.ru/) на базе [Omnipay](http://omnipay.thephpleague.com/).
 
@@ -21,9 +21,10 @@
 ###Установка модуля
 Установка модуля производится через [Composer](https://getcomposer.org/) запуском команды:
 ```
-composer require yandexmoney/omnipay
+#composer require yandexmoney/omnipay
+composer require bagart/omnipay3-yandexkassa
 ```
-или включением в файл `composer.json` пакета `yandexmoney/omnipay` с выполнением команды:
+или включением в файл `composer.json` пакета `bagart/omnipay3-yandexkassa` с выполнением команды:
 ```
 composer update
 ```

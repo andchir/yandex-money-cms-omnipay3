@@ -1,3 +1,5 @@
+# Payment gateway module for Omnipay: Yandex kassa (checkout)
+### forked from official for version compactable with actial Laravel",
 ##yandexmoney-cms-omnipay
 
 Модуль оплаты yandexmoney-omnipay необходим для интеграции с сервисом [Яндекс.Касса](http://kassa.yandex.ru/) на базе [Omnipay](http://omnipay.thephpleague.com/).
@@ -14,7 +16,7 @@
 [Помощь Кассы: отправка чеков по 54-ФЗ](https://yandex.ru/support/checkout/payments/tax-sync.html)
 
 ###Требования к Omnipay:
-* версия 2.x
+* версия 3.x
 
 ###Установка модуля
 Установка модуля производится через [Composer](https://getcomposer.org/) запуском команды:

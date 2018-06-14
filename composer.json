@@ -1,25 +1,25 @@
 {
-    "name": "yandexmoney/omnipay",
-	 "type": "library",
-    "description": "Payment gateway for Omnipay",
+    "name": "bagart/omnipay-yandexkassa",
+    "type": "library",
+    "description": "Payment gateway module for Omnipay: Yandex kassa(checkout) forked from official for version compactable with actial Laravel",
     "authors": [
         {
             "name": "Yandex.Money",
             "email": "cms@yamoney.ru"
+        },
+	{
+            "name": "BAGArt",
+            "email": "baltaev.artur+opensource@gmail.com"
         }
     ],
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.0",
-		  "omnipay/common": "~2.0"
-    },
-	 "require-dev": {
-        "php": ">=5.3.0",
-		  "omnipay/common": "~2.0"
+        "omnipay/common": "^3",
     },
     "autoload": {
-			"psr-4": {
-				"yandexmoney\\YandexMoney\\": "src/"
-			}
-		}
+        "psr-4": {
+            "yandexmoney\\YandexMoney\\": "src/"
+        }
+    }
 }

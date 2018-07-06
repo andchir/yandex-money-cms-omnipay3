@@ -3,34 +3,43 @@
 namespace Omnipay\YandexMoney\Message;
 
 use Omnipay\Tests\TestCase;
+use yandexmoney\YandexMoney\Message\IndividualAuthorizeResponse;
 
 class IndividualAuthorizeResponseTest extends TestCase
 {
+    /**
+     * @var IndividualAuthorizeResponse
+     */
+    protected $request;
+
     public function testSuccess()
     {
-        $response = new IndividualAuthorizeResponse($this->getMockRequest(), 
-											array(  'code' => 0, 
-													'orderNumber' => '5'
-											)
-										);
+        $response = new IndividualAuthorizeResponse($this->getMockRequest(),
+            array(
+                'code' => 0,
+                'orderNumber' => '5'
+            )
+        );
 
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertFalse($response->getMessage());
-		$this->assertSame('5', $response->getTransactionReference());
+        $this->assertSame('5', $response->getTransactionReference());
     }
-	public function testFailure()
+
+    public function testFailure()
     {
-        $response = new IndividualAuthorizeResponse($this->getMockRequest(), 
-											array(  'code' => 1, 
-													'orderNumber' => '5'
-											)
-										);
+        $response = new IndividualAuthorizeResponse($this->getMockRequest(),
+            array(
+                'code' => 1,
+                'orderNumber' => '5'
+            )
+        );
 
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
-       	$this->assertSame('HTTP/1.0 401 Unauthorized', $response->getMessage());
-		$this->assertSame('5', $response->getTransactionReference());
+        $this->assertSame('HTTP/1.0 401 Unauthorized', $response->getMessage());
+        $this->assertSame('5', $response->getTransactionReference());
     }
 }
 

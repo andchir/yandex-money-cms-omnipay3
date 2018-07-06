@@ -7,6 +7,33 @@ namespace yandexmoney\YandexMoney\Message;
  */
 class PurchaseRequest extends \Omnipay\Common\Message\AbstractRequest
 {
+    public function getPreparedParams(array $parameters = array())
+    {
+        if (isset($parameters['orderSumAmount'])) {
+            $parameters['amount'] = $parameters['orderSumAmount'];
+        }
+
+        if (!isset($parameters['currency']) && $this->getCurrencyDefault()) {
+            $parameters['currency'] = $this->getCurrencyDefault();
+        }
+
+        return $parameters;
+    }
+
+    public function getCurrencyDefault()
+    {
+        return getenv('YANDEXKASSA_CURRENCY_DEFAULT') ? getenv('YANDEX-YANDEXKASSA_CURRENCY_DEFAULT') : 'RUB';
+    }
+
+    public function initialize(array $parameters = array())
+    {
+        return parent::initialize(
+            $this->getPreparedParams(
+                $parameters
+            )
+        );
+    }
+
     public function getPassword()
     {
         return $this->getParameter('password');
@@ -51,10 +78,12 @@ class PurchaseRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->getParameter('orderId');
     }
+
     public function setOrderId($value)
     {
         return $this->setParameter('orderId', $value);
     }
+
     public function getShopId()
     {
         return $this->getParameter('shopid');
@@ -87,8 +116,9 @@ class PurchaseRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function getAction()
     {
-         return $this->getParameter('action');
+        return $this->getParameter('action');
     }
+
     public function setAction($value)
     {
         return $this->setParameter('action', $value);
@@ -97,42 +127,49 @@ class PurchaseRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function getOrderSumAmount()
     {
-         return $this->getParameter('orderSumAmount');
+        return $this->getParameter('orderSumAmount');
     }
+
     public function getOrderSumCurrencyPaycash()
     {
-         return $this->getParameter('orderSumCurrencyPaycash');
+        return $this->getParameter('orderSumCurrencyPaycash');
     }
+
     public function getOrderSumBankPaycash()
     {
-         return $this->getParameter('orderSumBankPaycash');
+        return $this->getParameter('orderSumBankPaycash');
     }
 
     public function setOrderSumAmount($value)
     {
-         return $this->setParameter('orderSumAmount', $value);
+        return $this->setParameter('orderSumAmount', $value);
     }
+
     public function setOrderSumCurrencyPaycash($value)
     {
-         return $this->setParameter('orderSumCurrencyPaycash', $value);
+        return $this->setParameter('orderSumCurrencyPaycash', $value);
     }
+
     public function setOrderSumBankPaycash($value)
     {
-         return $this->setParameter('orderSumBankPaycash', $value);
+        return $this->setParameter('orderSumBankPaycash', $value);
     }
 
     public function getInvoiceId()
     {
         return $this->getParameter('invoiceId');
     }
+
     public function setInvoiceId($value)
     {
         return $this->setParameter('invoiceId', $value);
     }
+
     public function getMd5()
     {
-         return $this->getParameter('md5');
+        return $this->getParameter('md5');
     }
+
     public function setMd5($value)
     {
         return $this->setParameter('md5', $value);
@@ -152,7 +189,7 @@ class PurchaseRequest extends \Omnipay\Common\Message\AbstractRequest
     public function getData()
     {
         $this->validate('shopid', 'scid', 'customerNumber', 'amount', 'orderId',
-                        'method', 'returnUrl', 'cancelUrl');
+            'method', 'returnUrl', 'cancelUrl');
 
         $data = array();
         $data['scid'] = $this->getScid();

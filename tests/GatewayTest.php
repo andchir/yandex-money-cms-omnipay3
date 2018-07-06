@@ -3,6 +3,7 @@
 namespace Omnipay\YandexMoney;
 
 use Omnipay\Tests\GatewayTestCase;
+use yandexmoney\YandexMoney\Gateway;
 
 
 class GatewayTest extends GatewayTestCase

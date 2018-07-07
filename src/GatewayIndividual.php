@@ -6,7 +6,19 @@ use Omnipay\Common\AbstractGateway;
 
 
 /**
- * YandexMoney Class
+ * YandexMoney Gateway Individual Class
+ * Methods no supported: section for IDE
+ * @see GatewayInterface
+ *
+ * @method completeAuthorize(array $options = array()) - not support
+ * @method capture(array $options = array())           - not support
+ * @method refund(array $options = array())            - not support
+ * @method void(array $options = array())              - not support
+ * @method createCard(array $options = array())        - not support
+ * @method updateCard(array $options = array())        - not support
+ * @method deleteCard(array $options = array())        - not support
+ * @method completePurchase(array $options = array())  - not support
+
  */
 class GatewayIndividual extends AbstractGateway
 {

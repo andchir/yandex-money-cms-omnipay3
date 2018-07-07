@@ -3,10 +3,23 @@
 namespace yandexmoney\YandexMoney;
 
 use Omnipay\Common\AbstractGateway;
+use Omnipay\Common\Exception\BadMethodCallException;
+use Omnipay\Common\GatewayInterface;
+use Omnipay\Common\Message\RequestInterface;
 
 
 /**
- * YandexMoney Class
+ * YandexMoney Gateway Class
+ * Mothods no supported:
+ * @see GatewayInterface section for IDE
+ *
+ * @method completeAuthorize(array $options = array()) - not support
+ * @method capture(array $options = array())           - not support
+ * @method refund(array $options = array())            - not support
+ * @method void(array $options = array())              - not support
+ * @method createCard(array $options = array())        - not support
+ * @method updateCard(array $options = array())        - not support
+ * @method deleteCard(array $options = array())        - not support
  */
 class Gateway extends AbstractGateway
 {
@@ -18,7 +31,7 @@ class Gateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return array(
-            'password'  => '',
+            'password' => '',
             'shopid' => '',
             'scid' => '',
             'method' => '',
@@ -34,22 +47,30 @@ class Gateway extends AbstractGateway
         );
     }
 
-    public function getReceipt($source = false)
+    public function getReceipt($decode = false)
     {
-        if ($source) {
-            return $this->getParameter('receipt');
-        } else {
-            return json_decode($this->getParameter('receipt'));
+        $receipt = $this->getParameter('receipt');
+        if ($decode) {
+            $receipt = json_decode($receipt, true);
         }
+
+        return $receipt;
     }
 
     public function setReceipt($value, $encode = false)
     {
-        if ($encode || is_array($value)) {
-            return $this->setParameter('receipt', json_encode($value));
-        } else {
-            return $this->setParameter('receipt', $value);
+        if (!$encode && is_array($value)) {
+            throw new BadMethodCallException('technical error: use encode for setReceipt(array) ');
         }
+
+        if ($encode) {
+            $value = json_encode($value);
+            if (json_last_error()) {
+                throw new BadMethodCallException('technical error: json_encode with error');
+            }
+        }
+
+        return $this->setParameter('receipt', $value);
     }
 
     public function getPassword()
@@ -81,42 +102,52 @@ class Gateway extends AbstractGateway
     {
         return $this->setParameter('scid', $value);
     }
+
     public function getOrderId()
     {
         return $this->getParameter('orderId');
     }
+
     public function setOrderId($value)
     {
         return $this->setParameter('orderId', $value);
     }
+
     public function getOrderNumber()
     {
         return $this->getParameter('orderNumber');
     }
+
     public function setOrderNumber($value)
     {
         return $this->setParameter('orderNumber', $value);
     }
+
     public function getCustomerNumber()
     {
         return $this->getParameter('customerNumber');
     }
+
     public function setCustomerNumber($value)
     {
         return $this->setParameter('customerNumber', $value);
     }
+
     public function getInvoiceId()
     {
         return $this->getParameter('invoiceId');
     }
+
     public function setInvoiceId($value)
     {
         return $this->setParameter('invoiceId', $value);
     }
+
     public function getMd5()
     {
-         return $this->getParameter('md5');
+        return $this->getParameter('md5');
     }
+
     public function setMd5($value)
     {
         return $this->setParameter('md5', $value);
@@ -124,33 +155,33 @@ class Gateway extends AbstractGateway
 
     public function getMethod()
     {
-         return $this->getParameter('method');
+        return $this->getParameter('method');
     }
 
     public function setMethod($value)
     {
-         return $this->setParameter('method', $value);
+        return $this->setParameter('method', $value);
     }
 
     public function getReturnUrl()
     {
-         return $this->getParameter('returnUrl');
+        return $this->getParameter('returnUrl');
     }
 
     public function setReturnUrl($value)
     {
-         return $this->setParameter('returnUrl', $value);
+        return $this->setParameter('returnUrl', $value);
     }
+
     public function getCancelUrl()
     {
-         return $this->getParameter('cancelUrl');
+        return $this->getParameter('cancelUrl');
     }
 
     public function setCancelUrl($value)
     {
-         return $this->setParameter('cancelUrl', $value);
+        return $this->setParameter('cancelUrl', $value);
     }
-
 
     public function getCurrencyNum()
     {
@@ -169,7 +200,7 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
-     * @return \Omnipay\Common\Message\AbstractRequest
+     * @return RequestInterface
      */
     public function purchase(array $parameters = array())
     {

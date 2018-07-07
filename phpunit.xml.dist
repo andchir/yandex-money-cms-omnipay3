@@ -11,6 +11,9 @@
          stopOnFailure="false"
          syntaxCheck="false">
     <testsuites>
+        <testsuite name="Omnipay Gateway Test Suite">
+            <directory>./tests/Gateway/</directory>
+        </testsuite>
         <testsuite name="Omnipay Test Suite">
             <directory>./tests/Message/</directory>
         </testsuite>

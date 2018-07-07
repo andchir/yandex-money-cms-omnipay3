@@ -44,6 +44,11 @@ use Omnipay\Omnipay;
  * на кошелек Яндекс.Деньги:
  ```
 $gateway = Omnipay::create('\yandexmoney\YandexMoney\GatewayIndividual');
+
+//use yandexmoney\YandexMoney\GatewayIndividual as YandexMoneyGateway
+//$gateway = Omnipay::create('\\'.YandexMoneyGateway::class),
+//$gateway = new YandexMoneyGateway(),
+
 $gateway->setAccount([номер_кошелька]);
 $gateway->setLabel([номер_заказа]);
 $gateway->setPassword([секретное_слово]);
@@ -55,6 +60,10 @@ $gateway->setCancelUrl([адрес_страницы_отказа]);
  * через сервис Яндекс.Касса:
  ```
 $gateway = Omnipay::create('\yandexmoney\YandexMoney\Gateway');
+//use yandexmoney\YandexMoney\Gateway as YandexCheckoutGateway
+//$gateway = Omnipay::create('\\'.YandexCheckoutGateway::class),
+//$gateway = new YandexCheckoutGateway,
+
 $gateway->setShopId([идентификатор_магазина]);
 $gateway->setScid([номер_витрины_магазина]);
 $gateway->setCustomerNumber([идентификатор_плательщика]);

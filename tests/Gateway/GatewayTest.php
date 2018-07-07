@@ -7,6 +7,7 @@ use yandexmoney\YandexMoney\Gateway as YandexCheckoutGateway;
 
 class GatewayTest extends GatewayTestCase
 {
+    protected $gateway;
     protected $authorizeOptions = array(
         'action' => 'action',
         'orderNumber' => '777',
@@ -18,7 +19,7 @@ class GatewayTest extends GatewayTestCase
         'customerNumber' => '1',
         'password' => 'secret'
     );
-    
+
     protected $purchaseOptions = array(
         'customerNumber' => '1',
         'orderId' => '123',
@@ -31,9 +32,12 @@ class GatewayTest extends GatewayTestCase
     public function setUp()
     {
         parent::setUp();
-        //  $gateway = \Omnipay::create(YandexKassaGateway::class);
-
-        $this->gateway = new YandexCheckoutGateway($this->getHttpClient(), $this->getHttpRequest());
+        if (!$this->gateway) {
+            $this->gateway = new YandexCheckoutGateway(
+                $this->getHttpClient(), 
+                $this->getHttpRequest()
+            );
+        }
 
         $this->gateway->setShopId('123456');
         $this->gateway->setScId('789');

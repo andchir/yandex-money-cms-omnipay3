@@ -33,9 +33,13 @@ class GatewayIndividualTest extends GatewayTestCase
     public function setUp()
     {
         parent::setUp();
-
-        $this->gateway = new YandexMoneyGateway($this->getHttpClient(), $this->getHttpRequest());
-
+        if (!$this->gateway) {
+            $this->gateway = new YandexMoneyGateway(
+                $this->getHttpClient(),
+                $this->getHttpRequest()
+            );
+        }
+        
         // 0_o
         $this->gateway->setAccount('410011680044609');
         $this->gateway->setPassword('dUtlwyajCX6osFzTuZriXPQJ');

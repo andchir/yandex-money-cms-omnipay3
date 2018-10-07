@@ -218,12 +218,12 @@ class GatewayIndividual extends AbstractGateway
 
     public function authorize(array $parameters = array())
     {
-        return $this->createRequest('\yandexmoney\YandexMoney\Message\IndividualAuthorizeRequest', $parameters);
+        return $this->createRequest('\Omnipay\YandexMoney\Message\IndividualAuthorizeRequest', $parameters);
     }
 
     public function purchase(array $parameters = array())
     {
-        return $this->createRequest('\yandexmoney\YandexMoney\Message\IndividualPurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\YandexMoney\Message\IndividualPurchaseRequest', $parameters);
     }
 
 }

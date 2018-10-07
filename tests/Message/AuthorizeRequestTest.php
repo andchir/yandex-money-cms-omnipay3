@@ -1,9 +1,9 @@
 <?php
 
-namespace Omnipay\YandexMoney\Message;
+namespace Omnipay\YandexMoney\Tests\Message;
 
 use Omnipay\Tests\TestCase;
-use yandexmoney\YandexMoney\Message\AuthorizeRequest;
+use Omnipay\YandexMoney\Tests\Message\AuthorizeRequest;
 
 class AuthorizeRequestTest extends TestCase
 {

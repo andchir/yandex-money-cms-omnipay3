@@ -1,9 +1,9 @@
 <?php
 
-namespace Omnipay\YandexMoney;
+namespace Omnipay\YandexMoney\Tests;
 
 use Omnipay\Tests\GatewayTestCase;
-use yandexmoney\YandexMoney\Gateway as YandexCheckoutGateway;
+use Omnipay\YandexMoney\Tests\Gateway as YandexCheckoutGateway;
 
 class GatewayTest extends GatewayTestCase
 {

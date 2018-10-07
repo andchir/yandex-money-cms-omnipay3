@@ -1,9 +1,9 @@
 <?php
 
-namespace Omnipay\YandexMoney\Message;
+namespace Omnipay\YandexMoney\Tests\Message;
 
 use Omnipay\Tests\TestCase;
-use yandexmoney\YandexMoney\Message\CompletePurchaseRequest;
+use Omnipay\YandexMoney\Tests\Message\CompletePurchaseRequest;
 
 class CompletePurchaseRequestTest extends TestCase
 {

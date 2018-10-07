@@ -1,5 +1,5 @@
 {
-    "name": "bagart/omnipay3-yandexkassa",
+    "name": "andchir/omnipay3-yandexkassa",
     "type": "library",
     "description": "Payment gateway module for Omnipay: Yandex kassa(checkout) forked from official for version compatible with Laravel 5.6",
     "authors": [
@@ -10,6 +10,10 @@
         {
             "name": "BAGArt",
             "email": "baltaev.artur+opensource@gmail.com"
+        },
+        {
+            "name": "Andchir",
+            "email": "andchir@gmail.com"
         }
     ],
     "minimum-stability": "dev",

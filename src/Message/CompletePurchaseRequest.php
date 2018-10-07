@@ -1,6 +1,6 @@
 <?php
 
-namespace yandexmoney\YandexMoney\Message;
+namespace Omnipay\YandexMoney\Message;
 
 use Omnipay\Common\Exception\InvalidResponseException;
 

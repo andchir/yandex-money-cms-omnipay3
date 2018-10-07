@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "yandexmoney\\YandexMoney\\": "src/"
+            "Omnipay\\YandexMoney\\": "src/"
         }
     },
     "autoload-dev": {

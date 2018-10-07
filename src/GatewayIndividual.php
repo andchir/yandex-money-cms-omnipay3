@@ -1,6 +1,6 @@
 <?php
 
-namespace yandexmoney\YandexMoney;
+namespace Omnipay\YandexMoney;
 
 use Omnipay\Common\AbstractGateway;
 

@@ -22,7 +22,7 @@
 Установка модуля производится через [Composer](https://getcomposer.org/) запуском команды:
 ```
 #composer require yandexmoney/omnipay
-composer require bagart/omnipay3-yandexkassa
+composer require andchir/omnipay3-yandexkassa
 ```
 или включением в файл `composer.json` пакета `bagart/omnipay3-yandexkassa` с выполнением команды:
 ```
@@ -43,7 +43,7 @@ use Omnipay\Omnipay;
 3. Настройкой модуля для приема платежей:
  * на кошелек Яндекс.Деньги:
  ```
-$gateway = Omnipay::create('\yandexmoney\YandexMoney\GatewayIndividual');
+$gateway = Omnipay::create('YandexMoney');
 
 //use yandexmoney\YandexMoney\GatewayIndividual as YandexMoneyGateway
 //$gateway = Omnipay::create('\\'.YandexMoneyGateway::class),
